@@ -1,4 +1,4 @@
-package linkedlists;
+package kunkunur.org.linkedlists;
 
 /*Write code to remove duplicates from an unsorted linked list
 
@@ -18,7 +18,7 @@ package linkedlists;
 public class RemoveDuplicatesInLinkedList {
 
 	public static void main(String[] s) {
-		LinkedList list = new LinkedList(2).add(5).add(3).add(2).add(3).add(5);
+		LinkedList list = new LinkedList(2).add(5).add(3).add(2).add(3).add(5);  //Builder Pattern.
 
 		list.print();
 		list.removeDuplicates();

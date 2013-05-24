@@ -1,4 +1,4 @@
-package linkedlists;
+package kunkunur.org.linkedlists;
 
 public class LinkedList {
 	private Node start;
