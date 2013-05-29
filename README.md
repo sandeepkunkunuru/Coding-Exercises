@@ -1,9 +1,19 @@
-This project will host my solutions to some coding exercises
-============================================================
+Introduction
+------------
+This project will host 
+* My solutions to some data-structures/algorithms based problems
+* Example Code snippets to work with some of the libraries/frameworks that I am interested in.
 
-Notes
------
+Problem Solving - Notes
+-----------------------
 
 * Start with exemplifying the problem.
-* Create atlest one example for each boundary(in the context of the problem) condition.
+* Create atlest one example for each boundary condition.
 * Try to identify Objects ahead
+
+Examples
+--------
+On
+
+* Cassandra
+* Netty
