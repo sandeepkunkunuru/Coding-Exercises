@@ -1,6 +1,6 @@
-package kunkunur.org.problemsoloving;
+package kunkunur.org.problemsolving;
 
-import kunkunur.org.problemsoloving.datastructures.LinkedList;
+import kunkunur.org.problemsolving.datastructures.LinkedList;
 
 /*Write code to remove duplicates from an unsorted linked list
 
@@ -20,7 +20,8 @@ import kunkunur.org.problemsoloving.datastructures.LinkedList;
 public class RemoveDuplicatesInLinkedList {
 
 	public static void main(String[] s) {
-		LinkedList list = new LinkedList(2).add(5).add(3).add(2).add(3).add(5);  //Builder Pattern.
+		LinkedList list = new LinkedList(2).add(5).add(3).add(2).add(3).add(5); // Builder
+																				// Pattern.
 
 		list.print();
 		list.removeDuplicates();

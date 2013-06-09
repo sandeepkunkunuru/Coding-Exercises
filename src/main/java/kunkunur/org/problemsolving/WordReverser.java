@@ -5,7 +5,7 @@
  * 
  * For the purposes of this problem the input will contain only letters and spaces. Be sure your solution tolerates leading, trailing, and multiple spaces.
  */
-package kunkunur.org.problemsoloving;
+package kunkunur.org.problemsolving;
 
 import java.util.Arrays;
 

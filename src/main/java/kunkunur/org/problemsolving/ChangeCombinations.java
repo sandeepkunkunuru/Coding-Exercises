@@ -11,7 +11,7 @@
  * 
  * what is n?
  */
-package kunkunur.org.problemsoloving;
+package kunkunur.org.problemsolving;
 
 import java.util.Arrays;
 import java.util.HashSet;

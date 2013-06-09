@@ -1,4 +1,4 @@
-package kunkunur.org.problemsoloving.datastructures;
+package kunkunur.org.problemsolving.datastructures;
 
 public class Queue<T> {
     private QueueNode<T> first;

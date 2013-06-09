@@ -1,4 +1,4 @@
-package kunkunur.org.problemsoloving.datastructures;
+package kunkunur.org.problemsolving.datastructures;
 
 public class LinkedList {
 	private Node start;
