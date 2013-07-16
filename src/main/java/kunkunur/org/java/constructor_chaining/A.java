@@ -1,4 +1,4 @@
-package kunkunur.org.java.constructorcallingchain;
+package kunkunur.org.java.constructor_chaining;
 
 public class A {
 

@@ -1,6 +1,6 @@
-package kunkunur.org.java.packageprivateneighbour;
+package kunkunur.org.java.pkg_prv_neighbour;
 
-import kunkunur.org.java.packageprivate.A;
+import kunkunur.org.java.pkg_prv.A;
 
 public class C extends A{
 	

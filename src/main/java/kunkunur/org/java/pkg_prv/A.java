@@ -1,4 +1,4 @@
-package kunkunur.org.java.packageprivate;
+package kunkunur.org.java.pkg_prv;
 
 public class A {
 
