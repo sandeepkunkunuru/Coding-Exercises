@@ -14,7 +14,7 @@ plot (X, z, 'b', 'LineWidth', 2);
 text (X(25), z(25) + 1, "log(x)");
 
 z = X;
-plot (X, X, 'g', 'LineWidth', 2);
+plot (X, z, 'g', 'LineWidth', 2);
 text (X(25), z(25) + 1, "x");
 
 z = X .* log(X);

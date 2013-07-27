@@ -2,7 +2,7 @@ package kunkunur.org.java.enums;
 
 public enum Days {
 	SUNDAY("sunday"), 
-	MONDAY("sunday"), //just 
+	MONDAY("1"), //just trying to put some value
 	TUESDAY("tuesday"), 
 	WEDNESDAY("wednesday"), 
 	THURSDAYDAY("thursday"), 
@@ -18,6 +18,7 @@ public enum Days {
 	//static methods are allowed
 	public static Days someMethod() {
 		//valueOf method returns an enum whose name is the string provided
+		//hence below statement returns Days.MONDAY
 		return Days.valueOf("MONDAY");
 	}
 
