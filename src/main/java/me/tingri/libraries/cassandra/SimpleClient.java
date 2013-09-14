@@ -40,26 +40,26 @@ public class SimpleClient {
 		session.execute("CREATE KEYSPACE simplex WITH replication "
 				+ "= {'class':'SimpleStrategy', 'replication_factor':3};");
 
-		session.execute("CREATE TABLE simplex.songs (" + "id uuid PRIMARY KEY,"
+		session.execute("CREATE TABLE simplex.songs (" + "items uuid PRIMARY KEY,"
 				+ "title text," + "album text," + "artist text,"
 				+ "tags set<text>," + "data blob" + ");");
 
-		session.execute("CREATE TABLE simplex.playlists (" + "id uuid,"
+		session.execute("CREATE TABLE simplex.playlists (" + "items uuid,"
 				+ "title text," + "album text, " + "artist text,"
-				+ "song_id uuid," + "PRIMARY KEY (id, title, album, artist)"
+				+ "song_id uuid," + "PRIMARY KEY (items, title, album, artist)"
 				+ ");");
 	}
 
 	public void loadData() {
 		Session session = getSession();
 
-		session.execute("INSERT INTO simplex.songs (id, title, album, artist, tags) "
+		session.execute("INSERT INTO simplex.songs (items, title, album, artist, tags) "
 				+ "VALUES ("
 				+ "756716f7-2e54-4715-9f00-91dcbea6cf50,"
 				+ "'La Petite Tonkinoise',"
 				+ "'Bye Bye Blackbird',"
 				+ "'Joséphine Baker'," + "{'jazz', '2013'})" + ";");
-		session.execute("INSERT INTO simplex.playlists (id, song_id, title, album, artist) "
+		session.execute("INSERT INTO simplex.playlists (items, song_id, title, album, artist) "
 				+ "VALUES ("
 				+ "2cc9ccb7-6221-4ccb-8387-f22b6a1b354d,"
 				+ "756716f7-2e54-4715-9f00-91dcbea6cf50,"
@@ -72,7 +72,7 @@ public class SimpleClient {
 		Session session = getSession();
 
 		ResultSet results = session.execute("SELECT * FROM simplex.playlists "
-				+ "WHERE id = 2cc9ccb7-6221-4ccb-8387-f22b6a1b354d;");
+				+ "WHERE items = 2cc9ccb7-6221-4ccb-8387-f22b6a1b354d;");
 
 		System.out
 				.println(String
@@ -97,7 +97,7 @@ public class SimpleClient {
 
 		PreparedStatement statement = session
 				.prepare("INSERT INTO simplex.songs "
-						+ "(id, title, album, artist, tags) "
+						+ "(items, title, album, artist, tags) "
 						+ "VALUES (?, ?, ?, ?, ?);");
 
 		BoundStatement boundStatement = new BoundStatement(statement);
@@ -113,7 +113,7 @@ public class SimpleClient {
 
 		statement = getSession().prepare(
 				"INSERT INTO simplex.playlists "
-						+ "(id, song_id, title, album, artist) "
+						+ "(items, song_id, title, album, artist) "
 						+ "VALUES (?, ?, ?, ?, ?);");
 		boundStatement = new BoundStatement(statement);
 

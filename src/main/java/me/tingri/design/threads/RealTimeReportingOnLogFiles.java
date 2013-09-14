@@ -3,7 +3,7 @@ package me.tingri.design.threads;
 /**
  * 
  * ip log... millions of rows/minute
- * ip address, session id, userid, content marker (integer 1 -100)
+ * ip address, session items, userid, content marker (integer 1 -100)
  * 
  * Without group by every minute, what’s the top ten ip address coming in and top ten content markers
 Objects
@@ -77,7 +77,7 @@ if(line == null) {
 
 Sttring[] line = line.split(“,”); 
 
-//ip address, session id, userid, content marker (integer 1 -100)
+//ip address, session items, userid, content marker (integer 1 -100)
 
 			count[line[3]] = count[line[3]] + 1; 
 			
