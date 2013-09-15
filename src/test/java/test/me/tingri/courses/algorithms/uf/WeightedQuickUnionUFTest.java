@@ -3,6 +3,7 @@ package test.me.tingri.courses.algorithms.uf;
 import me.tingri.courses.algorithms.uf.Item;
 import me.tingri.courses.algorithms.uf.QuickUnionUF;
 import me.tingri.courses.algorithms.uf.UnionFind;
+import me.tingri.courses.algorithms.uf.WeightedQuickUnionUF;
 import org.junit.Test;
 
 /**
@@ -12,12 +13,12 @@ import org.junit.Test;
  * Time: 9:00 PM
  * To change this template use File | Settings | File Templates.
  */
-public class QuickUnionUFTest {
+public class WeightedQuickUnionUFTest {
     @Test
     /**
      * Dynamic connectivity use case
      */
-    public void testQuickUnionUF_Dynamic_Connectivity() throws Exception {
+    public void testWeightedQuickUnionUF_Dynamic_Connectivity() throws Exception {
         int[] items = new int[10];
 
 
@@ -25,7 +26,7 @@ public class QuickUnionUFTest {
             items[i] = i;
         }
 
-        UnionFind uf = new QuickUnionUF<Item>(Utility.getItemArray(items));
+        UnionFind uf = new WeightedQuickUnionUF<Item>(Utility.getItemArray(items));
 
         System.out.println(uf);
 
@@ -53,13 +54,13 @@ public class QuickUnionUFTest {
     /**
      * Ancestors
      */
-    public void testQuickUnionUF_Ancestors() throws Exception {
+    public void testWeightedQuickUnionUF_Ancestors() throws Exception {
         String[] items = new String[]{"Seetharamaiah", "Sandeep", "China Sobhanam", "Alivelu", "Madhu",
                 "Jyothsna", "Sudheer", "KoteswaraRao", "G.Seetharamaiah",
                 "Raju", "Saritha", "Hymi"};
 
 
-        UnionFind uf = new QuickUnionUF<Item>(Utility.getItemArray(items));
+        UnionFind uf = new WeightedQuickUnionUF<Item>(Utility.getItemArray(items));
 
         System.out.println(uf);
 
