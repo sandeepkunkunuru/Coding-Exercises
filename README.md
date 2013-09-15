@@ -15,7 +15,11 @@ Problem Solving - Notes
 Examples
 --------
 * Union Find Algorithms comparison with 200000 integers with 100000 union operations followed by 150000 find-if-connected operations.
+
     Results in nano seconds
+
         Quick Find....53635713812 i.e. ~53 seconds
+
         Quick Union....22726180   i.e. ~22 seconds
+
         Weighted Quick Union....19328159 i.e. ~19 seconds
