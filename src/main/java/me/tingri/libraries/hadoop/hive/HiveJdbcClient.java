@@ -1,11 +1,10 @@
-package visualiq;
+package me.tingri.libraries.hadoop.hive;
 
 import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.sql.DriverManager;
-
 
 public class HiveJdbcClient {
 
@@ -16,7 +15,8 @@ public class HiveJdbcClient {
 			e.printStackTrace();
 			System.exit(1);
 		}
-		Connection con = DriverManager.getConnection("jdbc:hive://192.168.0.106:10000/default", "", "");
+		Connection con = DriverManager.getConnection(
+				"jdbc:hive://192.168.0.106:10000/default", "", "");
 		Statement stmt = con.createStatement();
 
 		// show tables
@@ -25,7 +25,7 @@ public class HiveJdbcClient {
 		System.out.println("Running: " + sql);
 		ResultSet res = stmt.executeQuery(sql);
 		if (res.next()) {
-		  System.out.println(res.getString(1));
+			System.out.println(res.getString(1));
 		}
 
 		res = stmt.executeQuery("select * from fact_report limit 10");

@@ -16,7 +16,8 @@ public class B extends A {
 	 }
 	*/
 	
-	 public String getNonStaticData(){
+	 @Override
+	public String getNonStaticData(){
 			return "SUB_NON_STATIC";
 	 }
 	 
@@ -32,8 +33,8 @@ public class B extends A {
 		/**
 		 * @HIDING
 		 */
-		System.out.println(b.getStaticData());
-		System.out.println(((A)b).getStaticData());
+		System.out.println(B.getStaticData());
+		System.out.println(A.getStaticData());
 		
 		/**
 		 * @OVERRIDING

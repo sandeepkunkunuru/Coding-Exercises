@@ -23,6 +23,7 @@ public class Point {
 		return y;
 	}
 
+	@Override
 	public Point clone(){
 		Point newPoint = new Point(this.x, this.y);
 	

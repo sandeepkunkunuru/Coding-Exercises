@@ -38,6 +38,7 @@ public class IOHandler implements IIOHandler {
 	/* (non-Javadoc)
 	 * @see com.thoughtworks.marsrovers.IIOHandler#readInput()
 	 */
+	@Override
 	public Input readInput(InputStream stream){
 		Scanner in = new Scanner(stream);
 
@@ -182,6 +183,7 @@ public class IOHandler implements IIOHandler {
 		}
 	}
 
+	@Override
 	public void writeOutput(OutputStream out,Output output) {
 		ArrayList<RoverOutput> roversoutput = output.getRoverOutput();
 		PrintWriter writer = new PrintWriter(out);

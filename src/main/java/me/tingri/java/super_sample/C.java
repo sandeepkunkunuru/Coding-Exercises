@@ -10,6 +10,7 @@ public class C extends B {
 		System.out.println(((A)c).a);
 	}
 	
+	@Override
 	public void printSOPs(){
 		/**
 		 * @UNCOMPILABLE		 

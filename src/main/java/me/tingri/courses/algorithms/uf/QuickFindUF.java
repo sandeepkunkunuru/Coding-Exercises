@@ -32,7 +32,8 @@ public class QuickFindUF<T extends Item>  extends UF<T>{
         }
     }
 
-    public String toString(){
+    @Override
+	public String toString(){
         return Arrays.toString(items);
     }
 }

@@ -24,6 +24,7 @@ public class ThreadIllustration {
 			this.monitor = monitor;
 		}
 
+		@Override
 		public void run() {
 			try {
 				Thread producer = new Thread(new Producer(monitor));
@@ -50,6 +51,7 @@ public class ThreadIllustration {
 
 		}
 
+		@Override
 		public void run() {
 			try {
 				while (true) {
@@ -77,6 +79,7 @@ public class ThreadIllustration {
 			this.monitor = monitor;
 		}
 
+		@Override
 		public void run() {
 			try {
 				while (true) {

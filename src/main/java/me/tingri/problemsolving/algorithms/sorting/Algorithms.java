@@ -1,7 +1,5 @@
 package me.tingri.problemsolving.algorithms.sorting;
 
-import java.util.ArrayList;
-
 import org.apache.commons.lang.ArrayUtils;
 
 public class Algorithms<T extends Comparable<T>> {

@@ -31,6 +31,7 @@ public class Position {
 		this.orientation = orientation;
 	}
 	
+	@Override
 	public Position clone(){
 		Position newPosition = new Position();
 		

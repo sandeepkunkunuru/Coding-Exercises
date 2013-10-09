@@ -5,10 +5,12 @@ public class TestImpl implements ITestConstantsAndInnerClasses {
 
 	public static void main(String[] s){
 		System.out.println(ITestConstantsAndInnerClasses.a);
-		System.out.println(TestImpl.a);
+		System.out.println(ITestConstantsAndInnerClasses.a);
 		
-		System.out.println(new ITestConstantsAndInnerClasses.TestInnerClass().getData());
-		System.out.println(new TestInnerClass().getData());
+		new ITestConstantsAndInnerClasses.TestInnerClass();
+		System.out.println(TestInnerClass.getData());
+		new TestInnerClass();
+		System.out.println(TestInnerClass.getData());
 
 		System.out.println(ITestConstantsAndInnerClasses.TestStaticInnerClass.getData());
 

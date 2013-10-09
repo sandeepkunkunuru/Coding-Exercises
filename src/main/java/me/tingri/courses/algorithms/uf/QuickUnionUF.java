@@ -36,7 +36,8 @@ public class QuickUnionUF<T extends Item> extends UF<T> {
         items[root_p].id = items[root_q].id;
     }
 
-    public String toString() {
+    @Override
+	public String toString() {
         return Arrays.toString(items);
     }
 }

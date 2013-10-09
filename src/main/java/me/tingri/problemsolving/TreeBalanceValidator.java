@@ -53,6 +53,7 @@ public class TreeBalanceValidator {
 			}
 		}
 
+		@Override
 		public String toString() {
 			Node<T> curNode = this;
 			StringBuilder str = new StringBuilder();

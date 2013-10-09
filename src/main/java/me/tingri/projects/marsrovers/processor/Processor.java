@@ -20,6 +20,7 @@ import me.tingri.projects.marsrovers.data.RoverOutput;
 public class Processor implements IProcessor {
 
 	
+	@Override
 	public RoverOutput process(Plateau plateau, RoverInput roverInput) throws MovementException {
 		int roverId = roverInput.getRoverId();
 		ArrayList<ControlInstruction> instructions = roverInput.getInstructions();		

@@ -16,7 +16,8 @@ public class Item<U> {
        this.id = id;
     }
 
-    public String toString(){
+    @Override
+	public String toString(){
         return this.id + "(" + this.value + ")";
     }
 
