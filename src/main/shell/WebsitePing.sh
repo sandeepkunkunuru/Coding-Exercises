@@ -1,3 +1,4 @@
+#!/bin/sh
 rm -f response.html
 wget $1 -o response.html
 grep -qs "401 Unauthorized" response.html

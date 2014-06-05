@@ -5,7 +5,7 @@ public enum Days {
 	MONDAY("1"), //just trying to put some value
 	TUESDAY("tuesday"), 
 	WEDNESDAY("wednesday"), 
-	THURSDAYDAY("thursday"), 
+	THURSDAY("thursday"),
 	FRIDAY("friday"), 
 	SATURDAY("saturday");
 

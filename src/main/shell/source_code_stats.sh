@@ -1,3 +1,4 @@
+#!/bin/sh
 # Based on http://www.statsvn.org/
 # Versions of the project are 5,6,7
 
