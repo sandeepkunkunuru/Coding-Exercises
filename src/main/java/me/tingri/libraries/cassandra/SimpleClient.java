@@ -1,17 +1,10 @@
 package me.tingri.libraries.cassandra;
 
+import com.datastax.driver.core.*;
+
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
-
-import com.datastax.driver.core.BoundStatement;
-import com.datastax.driver.core.Cluster;
-import com.datastax.driver.core.Host;
-import com.datastax.driver.core.Metadata;
-import com.datastax.driver.core.PreparedStatement;
-import com.datastax.driver.core.ResultSet;
-import com.datastax.driver.core.Row;
-import com.datastax.driver.core.Session;
 
 public class SimpleClient {
 	private Cluster cluster;
@@ -31,7 +24,7 @@ public class SimpleClient {
 	}
 
 	public void close() {
-		cluster.shutdown();
+		cluster.close();
 	}
 
 	public void createSchema() {

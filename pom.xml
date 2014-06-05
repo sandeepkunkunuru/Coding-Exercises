@@ -53,6 +53,25 @@
       <scope>test</scope>
     </dependency>
       <dependency>
+          <groupId>com.datastax.cassandra</groupId>
+          <artifactId>cassandra-driver-core</artifactId>
+          <version>2.0.2</version>
+      </dependency>
+      <dependency>
+          <groupId>jenkins</groupId>
+          <artifactId>jenkins.cli</artifactId>
+          <version>1.0</version>
+          <scope>system</scope>
+          <systemPath>${lib.path}/jenkins-cli.jar</systemPath>
+      </dependency>
+      <dependency>
+          <groupId>edu.princeton.cs</groupId>
+          <artifactId>algs4</artifactId>
+          <version>1.0</version>
+          <scope>system</scope>
+          <systemPath>${lib.path}/algs4.jar</systemPath>
+      </dependency>
+      <dependency>
           <groupId>edu.princeton.cs</groupId>
           <artifactId>stdlib</artifactId>
           <version>1.0</version>
@@ -60,9 +79,9 @@
           <systemPath>${lib.path}/stdlib.jar</systemPath>
       </dependency>
       <dependency>
-          <groupId>org.apache.commons</groupId>
-          <artifactId>commons-lang3</artifactId>
-          <version>3.1</version>
+          <groupId>commons-lang</groupId>
+          <artifactId>commons-lang</artifactId>
+          <version>2.1</version>
       </dependency>
   </dependencies>
 </project>
