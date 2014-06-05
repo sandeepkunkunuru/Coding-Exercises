@@ -26,7 +26,7 @@ public class JenkinsRemoteClient {
         argsList = argsList.subList(2,argsList.size());
         argsList = new ArrayList<String>(argsList);
 
-        CLIConnectionFactory factory = new CLIConnectionFactory().url("http://localhost:8080");
+        CLIConnectionFactory factory = new CLIConnectionFactory().url(url);
         CLI cli = factory.connect();
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
@@ -35,6 +35,8 @@ public class JenkinsRemoteClient {
         cli.execute(argsList, System.in, bos, bos);
 
         String output = new String(baos.toByteArray());
+
+        cli.close();
 
         System.out.println(output);
     }

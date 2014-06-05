@@ -1,6 +1,6 @@
 package me.tingri.problemsolving.algorithms.sorting;
 
-import org.apache.commons.lang.ArrayUtils;
+//import org.apache.commons.lang.ArrayUtils;
 
 public class Algorithms<T extends Comparable<T>> {
 
@@ -17,7 +17,7 @@ public class Algorithms<T extends Comparable<T>> {
 
 		//values = algorithm.mergeSort(values);
 		
-		System.out.println(ArrayUtils.toString(values));
+		//System.out.println(ArrayUtils.toString(values));
 
 	}
 
