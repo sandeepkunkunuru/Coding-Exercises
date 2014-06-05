@@ -4,35 +4,79 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class ThreadIllustration {
-	private static Queue<Integer> jobQueue = new LinkedList<Integer>();
-    private static final int MAXIMUM_JOBS = 100 ;
+    /**
+     * @param args
+     */
+    public static void main(String[] args) {
+        Monitor<Integer> monitor;
+        if (args.length == 3) {
+            monitor = new Monitor<Integer>(Integer.parseInt(args[0]), Integer.parseInt(args[1]), Integer.parseInt(args[2]));
+        } else {
+            monitor = new Monitor<Integer>();
+        }
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		ThreadIllustration monitor = new ThreadIllustration();
+        Thread controller = new Thread(new Controller(monitor));
 
-		Thread controller = new Thread(new Controller(monitor));
+        controller.start();
+    }
 
-		controller.start();
-	}
+    private static class Monitor<T> {
+        private Queue<T> jobQueue = new LinkedList<T>();
+        private int counter;
+        private int leastQueueSize;
+        private int maxQueueSize;
 
-	private static class Controller implements Runnable {
-		private Object monitor;
+        Monitor() {
+            this.leastQueueSize = 1;
+            this.maxQueueSize = 1;
+            this.counter = 5;
+        }
 
-		public Controller(Object monitor) {
-			this.monitor = monitor;
-		}
+        // if maximum jobs isn't a multiple of max queue size then some jobs will be left out in the queue
+        Monitor(int leastQueueSize, int maxQueueSize, int maximumJobs) {
+            this.leastQueueSize = leastQueueSize;
+            this.maxQueueSize = maxQueueSize;
+            this.counter = maximumJobs;
+        }
 
-		@Override
-		public void run() {
-			try {
-				Thread producer = new Thread(new Producer(monitor));
-				Thread consumer = new Thread(new Consumer(monitor));
+        boolean hasSufficientQueue() {
+            return jobQueue.size() >= leastQueueSize;
+        }
 
-				producer.start();
-				consumer.start();
+        boolean reachedQueueSizeLimit() {
+            return jobQueue.size() == maxQueueSize;
+        }
+
+        public void add(T value) {
+            jobQueue.add(value);
+        }
+
+        public T remove() {
+            counter--;
+            return jobQueue.remove();
+        }
+
+        public boolean stop(){
+            return counter < 0;
+        }
+    }
+
+    private static class Controller implements Runnable {
+        private Monitor monitor;
+
+        public Controller(Monitor monitor) {
+            this.monitor = monitor;
+        }
+
+        public void run() {
+            try {
+                Thread producer = new Thread(new Producer(monitor));
+                Thread consumer = new Thread( new Consumer(monitor));
+
+                System.out.println("This will always get printed at the very start");
+
+                producer.start();
+                consumer.start();
 
                 //If t is a Thread object whose thread is currently executing,
                 // t.join();
@@ -43,73 +87,72 @@ public class ThreadIllustration {
                 consumer.join();//Controller waits till consumer is also terminated
 
                 System.out.println("This will always get printed at the very end");
-			} catch (InterruptedException ie) {
-				System.out.println("Controller has been interrupted");
-			}
-		}
-	}
+            } catch (InterruptedException ie) {
+                System.out.println("Controller has been interrupted");
+            }
+        }
+    }
 
-	private static class Producer implements Runnable {
-        private Object monitor;
+    private static class Producer implements Runnable {
+        private final Monitor monitor;
 
-		public Producer(Object monitor) {
-			this.monitor = monitor;
+        public Producer(Monitor monitor) {
+            this.monitor = monitor;
 
-		}
+        }
 
-		@Override
-		public void run() {
-			try {
-                System.out.println("This will always get printed ahead");
-                int counter = MAXIMUM_JOBS;
-
-                while (true && counter > 0) {
-					synchronized (monitor) {
-						if (jobQueue.isEmpty() ) {
-							System.out
-									.println(Thread.currentThread().getName());
-							jobQueue.add(1);
-                            counter--;
-							monitor.notify();
-						} else {
-							monitor.wait();
-						}
-					}
-				}
-			} catch (InterruptedException ie) {
-				System.out.println("Producer has been interrupted");
-			}
-		}
-	}
-
-	private static class Consumer implements Runnable {
-		private Object monitor;
-
-		public Consumer(Object monitor) {
-			this.monitor = monitor;
-		}
-
-		@Override
-		public void run() {
-			try {
-                System.out.println("This will always get printed ahead");
-                int counter = MAXIMUM_JOBS;
-
-                while (true && counter > 0 ) {
-					synchronized (monitor) {
-						if (jobQueue.isEmpty()) {
-							monitor.wait();
-						} else {
-							System.out.println(Thread.currentThread().getName() + jobQueue.remove());
-                            counter--;
+        public void run() {
+            try {
+                while (true) {
+                    synchronized (monitor) {
+                        if(monitor.stop()){
+                            break;
+                        } else if (!monitor.reachedQueueSizeLimit()) {
+                            int value = (int) Math.floor(Math.random() * 1000);
+                            monitor.add(value);
+                            System.out.println(Thread.currentThread().getName() + "-" + value);
+                            System.out.println(Thread.currentThread().getName() + " is notifying other threads to wake up");
                             monitor.notify();
-						}
-					}
-				}
-			} catch (InterruptedException ie) {
-				System.out.println("consumer has been interrupted");
-			}
-		}
-	}
+                        } else {
+                            System.out.println(Thread.currentThread().getName() + " is going to wait state since queue size is " + monitor.jobQueue.size());
+                            monitor.wait();
+                        }
+                    }
+                }
+            } catch (InterruptedException ie) {
+                System.out.println("Producer has been interrupted");
+            }
+        }
+    }
+
+    private static class Consumer implements Runnable {
+        private final Monitor monitor;
+
+        public Consumer(Monitor monitor) {
+            this.monitor = monitor;
+        }
+
+        public void run() {
+            try {
+                while (true) {
+                    synchronized (monitor) {
+                        if(monitor.stop()){
+                            break;
+                        } else if (!monitor.hasSufficientQueue()) {
+                            System.out.println(Thread.currentThread().getName() + " is going to wait state since queue size is " + monitor.jobQueue.size());
+                            monitor.wait();
+                        } else {
+                            System.out.println(Thread.currentThread().getName() + "-" + monitor.remove());
+                            System.out.println(Thread.currentThread().getName() + " is notifying other threads to wake up");
+                            monitor.notify();
+                        }
+                    }
+                }
+            } catch (InterruptedException ie) {
+                System.out.println("consumer has been interrupted");
+            }
+        }
+    }
+
 
 }
